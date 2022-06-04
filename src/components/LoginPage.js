@@ -12,15 +12,15 @@ function SignUP(props) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
-  const history = useNavigate();
+  const navigateTo = useNavigate();
 
-  async function handleSubmit   (e) {
+  async function handleSubmit (e) {
     e.preventDefault();
     try {
       setError('');
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      history('/user-dashboard');
+      navigateTo('/Create-project');  //? change to dashboard
     } catch {
       setError('Log in failed');
     }

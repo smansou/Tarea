@@ -1,21 +1,28 @@
-import '../App.css';
 import LoginPage from './LoginPage';
 import SignUP from './SignUp';
-import AdminDash from './AdminDash';
-import TeamDash from './TeamDash';
+import DashBoard from './DashBoard';
 import { AuthProvider } from './contexts/AuthContext';
 import { Routes, Route} from 'react-router-dom';
+import Task from './Task';
+import CreateTask from './CreateTask';
+import CreateProject from './CreateProject';
+import Projects from './Projects';
+import Project from './Project';
 
 
 function HomePage() {
   return (
    <div>
+     
     <AuthProvider>
     <Routes>
-      <Route path='/control-dashboard' element={<AdminDash />} ></Route>
-      <Route path='/user-dashboard' element={<TeamDash />} ></Route>
-      <Route path='/signup' element={<SignUP />} ></Route>
-      <Route path='/login' element={<LoginPage />} ></Route>
+     
+      <Route path='/Dashboard' element={<DashBoard />} ></Route>
+      <Route path='/Projects' element={<Projects />} ></Route>
+      <Route path='/Signup' element={<SignUP />} ></Route>
+      <Route path='/Login' element={<LoginPage />}></Route>
+      <Route path='/Create-project' element={<CreateProject />} ></Route>
+      <Route path='/Add-task' element={<CreateTask />} ></Route>
     </Routes>
    </AuthProvider>
    </div>

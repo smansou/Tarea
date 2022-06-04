@@ -13,7 +13,7 @@ function SignUP(props) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const { signup } = useAuth();
-  const history = useNavigate();
+  const navigateTo = useNavigate();
 
   async function handleSubmit   (e) {
     e.preventDefault();
@@ -27,7 +27,7 @@ function SignUP(props) {
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
       setSuccess(true);
-      history('/login');
+      navigateTo('/login');
     } catch {
       setError('Sign up failed');
     }
@@ -36,7 +36,7 @@ function SignUP(props) {
 
   return (
     <div className="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0" >
-     
+         
       <header className="max-w-lg mx-auto">
      
           <h1 className="text-4xl font-bold text-white text-center">Startup</h1>
