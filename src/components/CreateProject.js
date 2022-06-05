@@ -21,7 +21,7 @@ export default function CreateProject() {
     info: '',
     tasks: [],
     owner: currentUser.email,
-    team: []
+    team: [currentUser.email]
   })
   
 
@@ -36,17 +36,11 @@ export default function CreateProject() {
     
 
     e.preventDefault();
-    //?/ Update DB ///
     setLoading(true);
-  
-    
 await addDoc(collection(db, 'projects'), {...projectState, projectID:Math.floor(Math.random()*40000000)})
    .then(()=>{
-     setLoading(false);
-     
-     //? navigateTo('/project/:id');
-     
-     
+     setLoading(false);     
+     navigateTo('/dashboard');
     }).catch((error)=>{
       console.log(error, 'failed to submit data');
     })

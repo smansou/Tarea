@@ -1,21 +1,32 @@
 import { collection, getDocs } from 'firebase/firestore'
-import React from 'react'
+import React, { children } from 'react'
 import { db } from '../firebase/firebase'
+import Projects from './Projects'
+import './dashboard.css'
+import ProjectOverview from './ProjectOverview'
 
 export default function DashBoard() {
 
- 
+
 
   return (
-    <div>DashBoard
 
-      <div className="projects-dash">
-        all relevant projects
+    <div className="dashboard">
+      <div className="navbar">
+        navbar
+      
       </div>
-      <div className="task-dash">
-        all pro
+      <div className='container'>
+      <div className="sidebar">
+        sidebar
+      </div>
+      
+      <Projects />
+      
       </div>
     </div>
+   
+
   )
 }
 
