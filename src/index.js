@@ -1,22 +1,58 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import HomePage from './components/HomePage';
-import { Routes, Route, BrowserRouter} from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import DashBoard from './components/DashBoard';
+import LoginPage from './components/LoginPage'
+import SignUP from './components/SignUp';
+import CreateTask from './components/CreateTask';
 import CreateProject from './components/CreateProject';
 import Projects from './components/Projects';
-import DashBoard from './components/DashBoard';
+import ProjectCard from './components/ProjectCard';
+import { AuthProvider } from './components/contexts/AuthContext';
+import HomePage from './components/HomePage';
+import TaskOverview from './components/TaskOverview';
+import AddTeam from './components/AddTeam';
+import Overview from './components/Overview';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-<BrowserRouter>
- 
-  <Routes>
-    <Route path="*" element={ <HomePage /> }></Route>
-  </Routes>
-  </BrowserRouter>    
+
+
+  <BrowserRouter>
+
+    {/* <Routes>
+  <Route path="*" element={ <HomePage /> }></Route>
+</Routes> */}
+
+    <AuthProvider>
+
+      <Routes>
+        <Route path='/' element={<HomePage />}></Route>
+        <Route path='Login' element={<LoginPage />}></Route>
+        <Route path='Signup' element={<SignUP />} ></Route>
+        <Route path='task-overview' element={<TaskOverview />} ></Route> //?
+        <Route path='Dashboard' element={<DashBoard />} >
+            <Route path='Overview' element={<Overview />} ></Route>
+          <Route path='Projects' element={<Projects />} >
+
+            <Route path='Create-task' element={<CreateTask />} ></Route>
+            <Route path='add-team' element={<AddTeam />} ></Route>
+
+          </Route>
+          <Route path='Create-project' element={<CreateProject />} ></Route>
+          <Route path='ProjectCard' element={<ProjectCard />} ></Route>
+
+        </Route>
+
+      </Routes>
+    </AuthProvider>
+
+
+
+  </BrowserRouter>
+
 
 );
-
 

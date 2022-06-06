@@ -1,19 +1,59 @@
-import { setDoc } from 'firebase/firestore';
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './task.css';
-
+import { collection, doc, getDoc, updateDoc, arrayUnion, arrayRemove, query, where, setDoc, deleteField } from 'firebase/firestore'
+import { db } from '../firebase/firebase';
 
 
 export default function Task(props) {
 
-    const [completed, setCompleted] = useState(false);
-    const handleCompletionChange = () => {
+  const [completed, setCompleted] = useState();
+  useEffect(()=>{
+    setCompleted(props.completed);
+  },[])
+
+  const handleCompletionChange = (e) => {
+    
+    //? update DB 
+    //!  props.taskId 
+    const docRef = doc(db, 'projects', props.projectId);
+    getDoc(docRef).then((res) => {
+      let tasksArray = [...res.data().tasks];
+      let taskIndex = tasksArray.indexOf(tasksArray.find((task, index) => task.taskID == props.taskId));
+      tasksArray[taskIndex].completed ?
+        tasksArray[taskIndex].completed = false :
+        tasksArray[taskIndex].completed = true;
         completed ? setCompleted(false) : setCompleted(true);
-        //? update DB 
-        // setDoc
-    }
-    return (
-        <div className='task-container'>
+        updateDoc(docRef, {
+          tasks: deleteField()
+          
+        })
+        updateDoc(docRef,{
+          tasks: arrayUnion(...tasksArray)
+        })
+      }).catch((error) => {
+        console.log(error, 'failed to submit data');
+      })
+  }
+  return (
+    <tr>
+
+      <td>{props.taskName}</td>
+      <td>{props.taskDeadline}</td>
+      <td>{props.taskInfo}</td>
+      <td>No</td>
+      <td className="collapsing task-container">
+        <div className="ui toggle checkbox">
+          <input onChange={handleCompletionChange} type="checkbox" checked={completed} /> <label></label>
+        </div>
+      </td>
+    </tr>
+
+  )
+}
+
+
+
+{/* <div className='task-container'>
              <div>{props.iid}</div>
              <label > {props.taskName} </label>
              <div>{props.taskDeadline}</div>
@@ -21,6 +61,4 @@ export default function Task(props) {
              <div >{props.taskInfo}</div>
             <input onChange={handleCompletionChange} type="checkbox" checked={completed} />
              
-        </div>
-    )
-}
+        </div> */}

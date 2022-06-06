@@ -6,25 +6,29 @@ import { useAuth } from './contexts/AuthContext';
 import ProjectCard from './ProjectCard';
 import ProjectOverview from './ProjectOverview';
 import './projects.css'
-
-
+import { Outlet } from 'react-router-dom';
 
 export default function Projects() {
+    const navigateTo = useNavigate();
+    const { currentUser } = useAuth();
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [projectID, setProjectID] = useState('');
-    const [projectVisible, setProjectVisible] = useState(false);
+    const [showProjectList, setShowProjectList] = useState(true);
+    const [isOwner, setisOwner] = useState(false);
+
+
     const [currentProject, setCurrentProject] = useState({
         title: '',
         id: '',
         info: '',
-        team: ''
+        team: '',
+        owner:''
     });
-    const navigateTo = useNavigate();
-    const { currentUser } = useAuth();
+
 
     //? get all projects where the current user's email is listed in Team Array
     useEffect(() => {
+     
         const projectsRef = collection(db, 'projects');
         let allProjects = [];
         const q = query(projectsRef, where("team", "array-contains", currentUser.email))
@@ -34,58 +38,70 @@ export default function Projects() {
                 snapshot.docs.forEach((doc) => {
                     allProjects.push({ ...doc.data(), id: doc.id });
                 })
-                setProjects(allProjects);
+                setProjects(allProjects);   
                 setLoading(false);
             }).catch((error) => {
                 console.log(error, "failed to fetch projects");
             })
     }, []);
 
+
+    const mapProjects = () => {
+        return projects.map((project) => {
+            // console.log(project.tasks.filter(e=>e.completed));
+
+            return (
+                <div className='ui segment project-card' onClick={() => handleProjectChoice(project.id)} value={project.id} key={project.id} >
+                    <ProjectCard
+                        name={project.name}
+                        info={project.info}
+                        projectID={project.id}
+                        team={project.team} 
+                        tasks={project.tasks}
+                        createdAt={Date(project.created).slice(3,16)}
+                        />
+                        
+                </div>
+            )
+        })
+    }
     const handleProjectChoice = (projID) => {
-    
         const current = projects.find(project => project.id === projID)
         setCurrentProject({
             title: current.name,
             id: projID,
             info: current.info,
-            team: [...current.team]
+            team: [...current.team],
+            tasks: [current.tasks],
+            owner: [current.owner],
         })
-        projectVisible ? setProjectVisible(false) : setProjectVisible(true);
+        showProjectList ? setShowProjectList(false) : setShowProjectList(true);
+         currentUser.email == current.owner ? setisOwner(true) : setisOwner(false)
+        
     }
-
-
-
-    const mapProjects = () => {
-        return projects.map((project) => {
-
-            return (
-                <div onClick={() => handleProjectChoice(project.id)} value={project.id} key={project.id} className='ui segment'>
-                    <ProjectCard
-                        name={project.name}
-                        info={project.info}
-                        projectID={project.id}
-                        team={project.team} />
-                    {/* <Routes>
-                            <Route path={`/Projects/${project.id}`} render={()=>{<ProjectCard iid={project.id} />}}>
-                          </Route>
-                        </Routes> */}
-
-                </div>
-
-
-            )
-        })
-    }
-
-
     return (
         <div className='overviews'>
-            <div className='projects-conatiner'>
-                {!loading && mapProjects()}
-            </div>
-            <div className='project-overview'>
-                {projectVisible && <ProjectOverview title={currentProject.title} info={currentProject.info} team={currentProject.team} projectId={currentProject.id} />}
-            </div>
+            {showProjectList ? <div className='projects-container'> {!loading && mapProjects()} </div>
+                :
+                <>
+                <div className='project-task-container'>
+                    {/* <div className='project-overview'> */}
+                        {!showProjectList && <ProjectOverview
+                            title={currentProject.title}
+                            info={currentProject.info}
+                            team={currentProject.team}
+                            projectId={currentProject.id}
+                            projectOwner={isOwner}
+                            
+                        />}
+                    {/* </div> */}
+                   
+                </div>
+                <Outlet />
+                </>
+                
+            }
         </div>
     )
 }
+

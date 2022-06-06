@@ -5,7 +5,7 @@ import { useNavigate} from "react-router-dom";
 
 
 
-function SignUP(props) {
+function LoginPage(props) {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -36,9 +36,9 @@ function SignUP(props) {
       
       }
       <header className="max-w-lg mx-auto">
-        <a href="#">
+    
           <h1 className="text-4xl font-bold text-white text-center">Startup</h1>
-        </a>
+     
       </header>
 
       <main className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
@@ -76,5 +76,5 @@ function SignUP(props) {
   );
 }
 
-export default SignUP;
+export default LoginPage;
 

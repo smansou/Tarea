@@ -1,0 +1,18 @@
+
+.form-container{
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+padding: 10px;
+    background-color: red;
+    opacity: 0.4;
+    /* height: 100vh;
+    width: 100vw; */
+}
+.btn:hover{
+    background-color: red;
+}
+.btn{
+    background-color: green;
+}

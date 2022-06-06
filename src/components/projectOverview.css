@@ -1,3 +1,58 @@
 .container{
     display: flex;
 }
+.overviews{
+    display: flex;
+    width: 100% !important;
+}
+.project-task-container{
+    display: flex;
+    width: 100%;
+}
+
+.task-overview{
+    width: 50%;
+    border: 1px solid yellow;
+    padding-left: 10px;
+}
+.project-overview{
+    width: 50%;
+}
+.task-container{
+    margin-right: 10px !important;
+}
+.project-card{
+    margin: 10px !important;
+}
+
+.projects-container{
+     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+@media (max-width: 768px) {
+.project-task-container{
+    flex-direction: column ;
+}
+.project-overview{
+    width: 100%;
+}
+.task-overview{
+    width: 100%;
+
+}
+.task-container{
+    width: 99% !important;
+    max-width: 1000px;
+}
+.projects-container{
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.project-card>*{
+    padding: 10px 0;
+}
+}

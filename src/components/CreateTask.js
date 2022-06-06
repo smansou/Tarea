@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import DatePicker from 'react-date-picker'
 import './createTask.css';
 import axios from 'axios';
@@ -12,41 +12,42 @@ import { collection, doc, getDoc, query, where, addDoc, updateDoc, FieldValue, a
  function CreateTask(props) {
     const [startDate, setStartDate] = useState(new Date());
     const [loading, setLoading] = useState(false);
-    const currentProject = useState();
+    const [currentProject, setCurrentProject] = useState();
     const taskNameRef = useRef();
     const taskInfoRef = useRef();
     const navigateTo = useNavigate();
     const [taskState, setTaskState] = useState({
-      name:'amazing',
-      info:'grace',
+      taskID: '',
+      name:'',
+      info:'',
       deadline:'',
       completed: false
+      
     });
+    useEffect(() => {
+      setTaskState({...taskState, taskID: Math.floor(Math.random()*6000000)})
+    
+      
+    }, [])
+    
 
 
     const  handleSubmit = async (e) => {
       e.preventDefault();
-           const docRef = doc(db, 'projects','VEHSKWGGUxKhoiQlyIAY');
+           const docRef = doc(db, 'projects','VEHSKWGGUxKhoiQlyIAY');  //! CHANGE to DYNAMIC props.projectID
         getDoc(docRef).then((res)=>{
         let taskArray = [...res.data().tasks]
         taskArray.push(taskState);
-        console.log(taskArray);
         updateDoc(docRef, {
           tasks: arrayUnion(...taskArray)
       
     })
-      })
-      
-         
-      
-      // .then(()=>{
-      //   setLoading(false);     
-        // console.log(taskState);
-      //   navigateTo('/dashboard');
-      //  }).catch((error)=>{
-      //    console.log(error, 'failed to submit data');
-      //  })
-    }
+      }).catch((error)=>{
+           console.log(error, 'failed to submit data');
+    })
+    navigateTo('/dashboard/projects')
+  }
+    
     const handleChange = async (e) => {
       setTaskState({...taskState, [e.target.name]: e.target.value })
       
@@ -59,6 +60,7 @@ import { collection, doc, getDoc, query, where, addDoc, updateDoc, FieldValue, a
   return (
 
     <form onSubmit={ handleSubmit } className='ui form'>
+      <i onClick={()=>navigateTo('/dashboard/projects')} className='x icon'></i>
      <div>   
     <label>Task Name</label>
     <input ref={taskNameRef} name={'name'} onChange={handleChange} type="text"/>

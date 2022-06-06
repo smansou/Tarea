@@ -4,8 +4,10 @@
 .task-container{
     padding: 5px;
     margin: 5px;
-    border: 1px solid black;
     width: 100%;
     max-width: 500px;
-    height: 50vh;
+    height: 8rem;
+}
+.project-cards{
+    width: 100% !important;
 }

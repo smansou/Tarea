@@ -32,15 +32,12 @@ export default function CreateProject() {
     }
 
   const handleSubmit = async (e) => {
-
-    
-
     e.preventDefault();
     setLoading(true);
-await addDoc(collection(db, 'projects'), {...projectState, projectID:Math.floor(Math.random()*40000000)})
+await addDoc(collection(db, 'projects'), {...projectState})
    .then(()=>{
      setLoading(false);     
-     navigateTo('/dashboard');
+     navigateTo('/dashboard/projects');
     }).catch((error)=>{
       console.log(error, 'failed to submit data');
     })

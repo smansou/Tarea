@@ -1,0 +1,6 @@
+.outlet-container{
+    position: absolute;
+    /* transform: translateX(); */
+    z-index: 8;
+    background-color: rgb(111, 205, 111);
+}
