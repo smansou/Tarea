@@ -1,24 +1,29 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Task from './Task';
 import { db } from '../firebase/firebase'
 import { collection, doc, getDoc, updateDoc, arrayUnion, query, where } from 'firebase/firestore'
 import './projectOverview.css'
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import AddTeam from './AddTeam';
+import { useAuth } from './contexts/AuthContext';
+import { MyGlobalContext } from './contexts/GlobalContext';
+import CreateTask from './CreateTask';
 
 
 export default function ProjectOverview(props) {
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [adding, setAdding] = useState(false);
+    const [addingTeam, setAddingTeam] = useState(false);
+    const [addingTask, setAddingTask] = useState(false);
     const [isOwner, setisOwner] = useState('none');
-
-
+    const user = useParams();
+    const { currentUser } = useAuth();
+    const contextValue = useContext(MyGlobalContext);
     const navigateTo = useNavigate();
 
     useEffect(() => {
-        props.projectOwner ? setisOwner('block') : setisOwner('none');
-        const projectRef = doc(db, 'projects', `${props.projectId}`);
+        currentUser.email == contextValue[0].projectOwner ? setisOwner('block') : setisOwner('none');
+        const projectRef = doc(db, 'projects', `${user.id}`);
         getDoc(projectRef)
             .then((snapshot) => {
                 setTasks(snapshot.data().tasks);
@@ -29,9 +34,7 @@ export default function ProjectOverview(props) {
     }, []);
 
     const mapTasks = () => {
-        console.log(tasks);
         return tasks.map((task, i) => {
-            // console.log(task.taskID);
             return (<Task
                 key={i}
                 taskName={task.name}
@@ -39,53 +42,53 @@ export default function ProjectOverview(props) {
                 taskDeadline={task.deadline}
                 completed={task.completed}
                 taskId={task.taskID}
-                projectId = {props.projectId}
+                projectId = {contextValue[0].projectId}
             />
             )
         })
     }
-    const handleAddTask = () => {
-        navigateTo('create-task')
-    }
+   
     return (
+        <div>
         <div className="content">            
                 <div className="add-btns-wrapper" style={{display: `${isOwner}`}}>
-                <div onClick={handleAddTask} className="ui right floated small primary labeled icon button">
+                <div onClick={()=>{setAddingTask(true)}} className="ui right floated small primary labeled icon button">
                     <i className="add icon"></i> Add Task
                 </div>
             <div className="add-team-container">
-            <button className='ui button' onClick={() => setAdding(true)}>add team member</button>
+            <button className='ui button' onClick={() => setAddingTeam(true)}>add team member</button>
             </div>
-            {adding && <AddTeam projectId={props.projectId} />}
+            {addingTeam && <AddTeam projectId={contextValue[0].projectId} />}
 
             </div>
             <div className='ui segment' colSpan="5">
-            <div className="ui large green header">{props.title}</div>
-            <p className='ui header'>{props.info}</p>
-
+            <div className="ui large green header">{contextValue[0].title}</div>
+            <p className='ui header'>{contextValue[0].info}</p>
+            {addingTask && <CreateTask projectId={contextValue[0].projectId} close={setAddingTask} />}
             </div>
 
-            <table className="ui compact celled definition table">
+            <table className="ui compact  table">
                 <thead>
                     <tr>
-
+                         {''}   
                     </tr>
                     <tr>
-                        <th></th>
+                        <th>Name</th>
                         <th>Deadline</th>
                         <th>Description</th>
-                        <th>Premium Plan</th>
+                        {/* <th>Team</th> */}
                         <th>Completed</th>
                     </tr>
                 </thead>
                 <tbody>
                     {!loading && mapTasks()} {/*?react fragment onClick handletaskchoise(taskID) render task (find(id)?) */}
                 </tbody>
-
             </table>
 
-            
         </div>
+        
+            <Outlet />
+            </div>
     )
 }
 

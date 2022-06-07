@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './task.css';
 import { collection, doc, getDoc, updateDoc, arrayUnion, arrayRemove, query, where, setDoc, deleteField } from 'firebase/firestore'
 import { db } from '../firebase/firebase';
+import Checkbox from './Checkbox';
 
 
 export default function Task(props) {
@@ -12,7 +13,7 @@ export default function Task(props) {
   },[])
 
   const handleCompletionChange = (e) => {
-    
+    console.log();
     //? update DB 
     //!  props.taskId 
     const docRef = doc(db, 'projects', props.projectId);
@@ -34,17 +35,25 @@ export default function Task(props) {
         console.log(error, 'failed to submit data');
       })
   }
-  return (
-    <tr>
 
-      <td>{props.taskName}</td>
+
+  const handleTaskChoice = () => {
+    
+  }
+
+
+  return (
+    <tr onClick={handleTaskChoice}>
+
+      <td><div className='ui small header'>{props.taskName}</div></td>
       <td>{props.taskDeadline}</td>
       <td>{props.taskInfo}</td>
-      <td>No</td>
+      {/* <td>No</td> */}
       <td className="collapsing task-container">
-        <div className="ui toggle checkbox">
-          <input onChange={handleCompletionChange} type="checkbox" checked={completed} /> <label></label>
-        </div>
+        {/* <div className="ui toggle checkbox"> */}
+          {/* <input onChange={handleCompletionChange} type="checkbox" checked={completed} /> <label></label> */}
+          <Checkbox checked={completed} onChangeCallback={handleCompletionChange}/>
+        {/* </div> */}
       </td>
     </tr>
 

@@ -10,10 +10,12 @@ import CreateProject from './components/CreateProject';
 import Projects from './components/Projects';
 import ProjectCard from './components/ProjectCard';
 import { AuthProvider } from './components/contexts/AuthContext';
-import HomePage from './components/HomePage';
+import HomePage from './components/Homepage/HomePage';
 import TaskOverview from './components/TaskOverview';
 import AddTeam from './components/AddTeam';
 import Overview from './components/Overview';
+import ProjectOverview from './components/ProjectOverview';
+import GlobalContext from './components/contexts/GlobalContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -25,7 +27,7 @@ root.render(
     {/* <Routes>
   <Route path="*" element={ <HomePage /> }></Route>
 </Routes> */}
-
+  <GlobalContext>
     <AuthProvider>
 
       <Routes>
@@ -34,22 +36,23 @@ root.render(
         <Route path='Signup' element={<SignUP />} ></Route>
         <Route path='task-overview' element={<TaskOverview />} ></Route> //?
         <Route path='Dashboard' element={<DashBoard />} >
-            <Route path='Overview' element={<Overview />} ></Route>
-          <Route path='Projects' element={<Projects />} >
-
+            <Route exact path='project-overview/:id' element={<ProjectOverview />} ></Route>
+            <Route exact path='Overview' element={<Overview />} ></Route>
+          <Route exact path='Projects' element={<Projects />} >
+          
             <Route path='Create-task' element={<CreateTask />} ></Route>
             <Route path='add-team' element={<AddTeam />} ></Route>
+          <Route exact path='ProjectCard' element={<ProjectCard />} ></Route>
 
           </Route>
           <Route path='Create-project' element={<CreateProject />} ></Route>
-          <Route path='ProjectCard' element={<ProjectCard />} ></Route>
 
         </Route>
 
       </Routes>
     </AuthProvider>
 
-
+    </GlobalContext>
 
   </BrowserRouter>
 

@@ -7,18 +7,18 @@ import ProjectOverview from './ProjectOverview'
 import Sidebar from './Sidebar'
 import Navbar from './Navbar'
 import { Routes, Route, Link, Outlet, useNavigate } from 'react-router-dom';
+import Overview from './Overview'
 
 
 
-//? show stats on dashboard landing, add projects tab to sidebar
 
 export default function DashBoard() {
 const navigateTo = useNavigate();
-useEffect(()=>{
+// useEffect(()=>{
 
-  navigateTo('overview');
+//   navigateTo('overview');
 
-},[])
+// },[])
   return (
     
     <div className="dashboard">
@@ -26,7 +26,7 @@ useEffect(()=>{
       <Navbar />
       <div className='main-content'>
         <Outlet />
-        
+      
       </div>
 
       <div className='container'>

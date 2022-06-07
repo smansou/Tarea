@@ -32,7 +32,7 @@ export default function ProjectCard(props) {
     return (
 
         <div className="ui card">
-            {/* <div className="div-color" style={{borderRadius:'50% ',width:'100%', height: '40px', backgroundColor:'#CF9FFF', marginTop: '10px', transform:'translatey(-30px)'}}></div> */}
+            <div className="div-color" style={{borderRadius:'50% ',width:'100%', height: '40px', backgroundColor:'#CF9FFF', marginTop: '10px', transform:'translatey(-30px)'}}></div>
             <div className="header ui">{props.name}</div>
             <span className="time">Created: {props.createdAt} </span>
             <div className="content">
@@ -47,12 +47,12 @@ export default function ProjectCard(props) {
             <div className="extra content">
                 <div className="right floated author">
                     <div className="description">
-                        {props.team}
+                        {props.team}  {/* add team avatatrs*/}
                     </div>
                 </div>
             </div>
             
-            <progress className='progress-bar' value={progress} max="100"></progress>
+            <progress className='progress-bar' value={props.tasks.filter(e=>e.completed).length} max={props.tasks.length}></progress>
         </div>
 
     )

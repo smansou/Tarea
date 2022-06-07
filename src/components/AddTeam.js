@@ -13,7 +13,7 @@ export default function AddTeam(props) {
     const [teamMemberEmail, setTeamMemberEmail] = useState('');
     const emailRef = useRef();
     const handleChange = async (e) => {
-        setTeamMemberEmail({ teamMemberEmail: e.target.value })
+        setTeamMemberEmail( e.target.value)
 
     }
     //get project ID props.projectID , get whole project doc from DB append to team array =>update DB
@@ -22,7 +22,9 @@ export default function AddTeam(props) {
         const docRef = doc(db, 'projects', props.projectId);  
         getDoc(docRef).then((res) => {
             let teamArray = [...res.data().team];
-            teamArray.push(emailRef.current.value);
+
+        console.log(teamArray);
+            teamArray.push(teamMemberEmail);
             updateDoc(docRef, {
                 team: arrayUnion(...teamArray)
 
@@ -32,11 +34,11 @@ export default function AddTeam(props) {
         })
         navigateTo('/dashboard/projects');
     }
-
+    
 
 
     return (
-        <div className="for-conatiner">
+        <div className="form-conatiner">
             <form onSubmit={handleAddTeamMember} className='ui form'>
                
                 <div>
@@ -50,8 +52,9 @@ export default function AddTeam(props) {
                 <button className='ui button' type='submit'> Confirm </button>
 
             </form>
-   
             </div>
+   
+        
 
     )
 }

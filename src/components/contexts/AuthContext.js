@@ -5,6 +5,7 @@ import { auth, storageRef } from '../../firebase/firebase';
 
 
 const AuthContext = createContext();
+
 export function useAuth() {
     return useContext(AuthContext);
     

@@ -1,3 +1,7 @@
+tr:hover{
+    background-color: rgba(231, 231, 231, 0.726);
+}
+
 .container{
     display: flex;
 }
@@ -23,9 +27,11 @@
 }
 .project-card{
     margin: 10px !important;
+    overflow: hidden;
 }
 
 .projects-container{
+    margin-left: 50px;
      display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
