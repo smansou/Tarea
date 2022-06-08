@@ -9,6 +9,7 @@ import './projects.css'
 import { Link, Outlet } from 'react-router-dom';
 import { MyGlobalContext } from './contexts/GlobalContext';
 import { textSync } from 'figlet';
+
 export default function Projects() {
    
     const navigateTo = useNavigate();
@@ -52,8 +53,6 @@ export default function Projects() {
 
     const mapProjects = () => {
         return projects.map((project) => {
-            // console.log(project.tasks.filter(e=>e.completed));
-
             return (
                 <div className='ui segment project-card'
                     onClick={() => handleProjectChoice(project.id)}
@@ -69,7 +68,6 @@ export default function Projects() {
                         createdAt={Date(project.created).slice(3, 16)}
                     />
                     <Link to={`/dashboard/project-overview/${project.id}`} />
-
                 </div>
             )
         })
@@ -84,33 +82,28 @@ export default function Projects() {
             tasks: [current.tasks],
             owner: [current.owner],
         })
+        
+       //  contextValue[1] is a function which updates global context
         contextValue[1]({title: current.name, projectOwner: current.owner, projectId: projID, info: current.info, team: [...current.team] });
         navigateTo(`/dashboard/project-overview/${projID}`);
-     
-       
     }
     return (
         <div className='overviews'>
-            {showProjectList ? <div className='projects-container'> {!loading && mapProjects()} </div>
-                :
-                <>
+            
+        <div className='projects-container'> {!loading && mapProjects()} </div>
+                
                     <div className='project-task-container'>
-                        {/* <div className='project-overview'> */}
-                        {!showProjectList && <ProjectOverview
-                            title={currentProject.title}
-                            info={currentProject.info}
-                            team={currentProject.team}
-                            projectId={currentProject.id}
-
-                        />}
-
-
-
+                       
+                        {!showProjectList && <ProjectOverview 
+                    // <ProjectOverview
+                            title={currentProject.title || ''}
+                            info={currentProject.info || ''}
+                            team={currentProject.team || ''}
+                            projectId={currentProject.id || ''} />
+                        }
                     </div>
-
-                </>
-
-            }
+                
+            
         </div>
     )
 }

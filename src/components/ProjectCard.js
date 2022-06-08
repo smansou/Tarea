@@ -9,7 +9,6 @@ export default function ProjectCard(props) {
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState([]);
     const [project, setProject] = useState([]);
-    const progress = props.tasks.length/props.tasks.filter(e=>e.completed).length;
     //   useEffect(() => {
     //     const docRef = doc(db, 'projects');
     //     let project = [];
@@ -31,28 +30,28 @@ export default function ProjectCard(props) {
 
     return (
 
-        <div className="ui card">
-            <div className="div-color" style={{borderRadius:'50% ',width:'100%', height: '40px', backgroundColor:'#CF9FFF', marginTop: '10px', transform:'translatey(-30px)'}}></div>
+        <div className="ui card projectCard">
+            {/* <div className="div-color" style={{borderRadius:'50% ',width:'100%', height: '40px', backgroundColor:'#CF9FFF', marginTop: '10px', transform:'translatey(-30px)'}}></div> */}
             <div className="header ui">{props.name}</div>
             <span className="time">Created: {props.createdAt} </span>
             <div className="content">
                 <div className="meta">
                 </div>
-                <div className="description">
+                {/* <div className="description"> */}
                     <p className="ui justified container">
                         {props.info}
                     </p>
-                </div>
+                {/* </div> */}
             </div>
             <div className="extra content">
                 <div className="right floated author">
-                    <div className="description">
                         {props.team}  {/* add team avatatrs*/}
-                    </div>
+                  
                 </div>
             </div>
-            
+            <div className="progress-bar">
             <progress className='progress-bar' value={props.tasks.filter(e=>e.completed).length} max={props.tasks.length}></progress>
+            </div>
         </div>
 
     )

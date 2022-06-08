@@ -13,21 +13,48 @@
 .add-task-field2{
     width: 80% !important;
 }
+.add-task-field:hover{
+border-bottom: 2px solid rgb(113, 71, 198);
+}
+.add-task-field2:hover{
+    width: 80% !important;
+}
+
 
 .taskForm{
-    width: 50%;
-    border-radius: 10%;
+    position: absolute;
+    width: 80%;
+    border-radius: 5%;
     position: absolute !important;
     z-index: 4;
     background-color: rgb(238, 234, 234);
+    box-shadow: 1px 1px 20px 1px rgba(128, 128, 128, 0.486);
+}
+.xicon{
+    float: right;
+    padding: 10px 40px;
+}
+.task-form-container{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 600px;
+    height: 400px;
+    padding: 50px 25px;
+}
+.task-inputs{
+    padding: 20px;
+    height: 100%;
 }
 
 .react-date-picker__inputGroup__input{
     background-color: transparent !important;
     height: 15px !important;
     border: none !important;
+    
 }
 .react-date-picker__wrapper{
+    border: 0.5px solid rgba(128, 128, 128, 0.549);
     background-color: #fff;
 }
 
@@ -36,7 +63,7 @@
     width: 130px;
     background-color: rgba(99, 73, 212, 0.624) !important;
     float:right !important;
-    border-bottom-right-radius: 40% !important;
+    border-bottom-right-radius: 20% !important;
 }
 
   

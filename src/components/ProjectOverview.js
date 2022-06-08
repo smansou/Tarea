@@ -8,6 +8,7 @@ import AddTeam from './AddTeam';
 import { useAuth } from './contexts/AuthContext';
 import { MyGlobalContext } from './contexts/GlobalContext';
 import CreateTask from './CreateTask';
+import TaskOverview from './TaskOverview';
 
 
 export default function ProjectOverview(props) {
@@ -15,6 +16,8 @@ export default function ProjectOverview(props) {
     const [loading, setLoading] = useState(true);
     const [addingTeam, setAddingTeam] = useState(false);
     const [addingTask, setAddingTask] = useState(false);
+    const [taskOpen, setTaskOpen] = useState(false);
+    const [currentTask, setCurrentTask] = useState({});
     const [isOwner, setisOwner] = useState('none');
     const user = useParams();
     const { currentUser } = useAuth();
@@ -32,6 +35,11 @@ export default function ProjectOverview(props) {
                 console.log(error, "failed to fetch Tasks");
             })
     }, []);
+    const toggleTask = (id) => {
+        let task = tasks.find((task)=>task.taskID === id);
+        setCurrentTask(task)
+        taskOpen ? setTaskOpen(false) : setTaskOpen(true);
+    }
 
     const mapTasks = () => {
         return tasks.map((task, i) => {
@@ -43,35 +51,35 @@ export default function ProjectOverview(props) {
                 completed={task.completed}
                 taskId={task.taskID}
                 projectId = {contextValue[0].projectId}
+                toggleTask = {toggleTask}
             />
+            
             )
         })
     }
    
     return (
-        <div>
+        <div className='tasks-projects-wrapper'>
         <div className="content">            
                 <div className="add-btns-wrapper" style={{display: `${isOwner}`}}>
                 <div onClick={()=>{setAddingTask(true)}} className="ui right floated small primary labeled icon button">
                     <i className="add icon"></i> Add Task
                 </div>
             <div className="add-team-container">
-            <button className='ui button' onClick={() => setAddingTeam(true)}>add team member</button>
+            <button className='ui button' onClick={() =>addingTeam ? setAddingTeam(false) : setAddingTeam(true)}>add team member</button>
             </div>
             {addingTeam && <AddTeam projectId={contextValue[0].projectId} />}
 
             </div>
+            {addingTask && <CreateTask projectId={contextValue[0].projectId} close={setAddingTask} />}
             <div className='ui segment' colSpan="5">
             <div className="ui large green header">{contextValue[0].title}</div>
             <p className='ui header'>{contextValue[0].info}</p>
-            {addingTask && <CreateTask projectId={contextValue[0].projectId} close={setAddingTask} />}
             </div>
 
-            <table className="ui compact  table">
+            <table className="ui compact table">
                 <thead>
-                    <tr>
-                         {''}   
-                    </tr>
+                 
                     <tr>
                         <th>Name</th>
                         <th>Deadline</th>
@@ -86,8 +94,11 @@ export default function ProjectOverview(props) {
             </table>
 
         </div>
-        
+        <div className="right-half">
             <Outlet />
+            {taskOpen && <TaskOverview name={currentTask.name} deadline={currentTask.deadline} info={currentTask.info} completed={currentTask.completed}  /> }
+
+        </div>
             </div>
     )
 }

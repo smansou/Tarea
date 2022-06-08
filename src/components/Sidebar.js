@@ -54,16 +54,7 @@ export default function Sidebar() {
                     </div>
                 </div>
 
-                <div className="item">
-                    <form action="#">
-                        <div className="ui mini action input">
-                            <input type="text" placeholder="Search..." />
-                            <button className="ui mini icon button">
-                                <i className=" search icon"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                
                 
             </div>
         </>

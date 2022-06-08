@@ -13,7 +13,6 @@ export default function Task(props) {
   },[])
 
   const handleCompletionChange = (e) => {
-    console.log();
     //? update DB 
     //!  props.taskId 
     const docRef = doc(db, 'projects', props.projectId);
@@ -37,13 +36,14 @@ export default function Task(props) {
   }
 
 
-  const handleTaskChoice = () => {
+  // const handleTaskChoice = () => {
     
-  }
+  // }
 
 
   return (
-    <tr onClick={handleTaskChoice}>
+
+    <tr className='task-row' onClick={()=>props.toggleTask(props.taskId)}>
 
       <td><div className='ui small header'>{props.taskName}</div></td>
       <td>{props.taskDeadline}</td>

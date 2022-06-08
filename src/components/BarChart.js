@@ -4,7 +4,7 @@ import { Chart as ChartJS } from 'chart.js/auto'
 import { Chart }            from 'react-chartjs-2'
 
 
-export default function LineChart(props) {
+export default function BarChart(props) {
 const [state, setState] = useState({
   
 
@@ -14,8 +14,8 @@ const [state, setState] = useState({
         
         label: props.title,
         backgroundColor: props.color,
-        height: '500px',
-        width: '1000px',
+        height: '150px',
+        width: '100px',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 1,
         tension: 0.2,
@@ -36,7 +36,7 @@ const [state, setState] = useState({
   return (
     <div> 
  
-<Line
+<Bar
           data={state}
           options={{
             title:{

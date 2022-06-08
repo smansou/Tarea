@@ -1,10 +1,38 @@
-tr:hover{
+
+.ui.compact.table{
+    background-color: transparent !important;
+    border: none;
+    width: 100% !important;
+
+}
+
+
+.task-row:hover{
+    cursor: pointer;
     background-color: rgba(231, 231, 231, 0.726);
+}
+.taskWrapper .taskWrapper{
+    width: 100vw !important;
+
 }
 
 .container{
     display: flex;
+    /* width: 50%; */
 }
+.right-half{
+    width: 50%;
+}
+.tasks-projects-wrapper{
+display: flex;
+width: 100% ;
+}
+.content{
+    margin-left: 20px ;
+    width: 50%;
+    overflow: hidden;
+}
+
 .overviews{
     display: flex;
     width: 100% !important;
@@ -16,7 +44,6 @@ tr:hover{
 
 .task-overview{
     width: 50%;
-    border: 1px solid yellow;
     padding-left: 10px;
 }
 .project-overview{
@@ -26,8 +53,19 @@ tr:hover{
     margin-right: 10px !important;
 }
 .project-card{
+    max-height: 300px ;
+    width: 250px;
+    max-width: 250px;
     margin: 10px !important;
     overflow: hidden;
+}
+.projectCard{
+    margin-bottom: 0 !important;
+    height: 200px;
+}
+.ui.justified.container{
+    max-height: 50px !important;
+    overflow:-moz-hidden-unscrollable
 }
 
 .projects-container{
@@ -36,29 +74,60 @@ tr:hover{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 }
+
+
+
 @media (max-width: 768px) {
-.project-task-container{
-    flex-direction: column ;
-}
-.project-overview{
-    width: 100%;
-}
-.task-overview{
-    width: 100%;
-
-}
-.task-container{
-    width: 99% !important;
-    max-width: 1000px;
-}
-.projects-container{
-
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.project-card>*{
-    padding: 10px 0;
-}
-}
+    .overviews{
+        flex-direction: column;
+    }
+    .project-task-container{
+        flex-direction: column ;
+    }
+    .tasks-projects-wrapper{
+        flex-direction: column;
+    }
+    .right-half{
+        width: 100%;
+    }
+    .content{
+        width: 100%;
+        padding: 0 !important;
+        flex-grow: 0 !important;
+    }
+    .content::after{
+        height: 10px !important;
+        padding: 0 !important;
+    }
+    
+    
+    .project-overview{
+        width: 100%;
+    }
+    .task-overview{
+        width: 100%;
+    
+    }
+    .task-container{
+        width: 99% !important;
+        max-width: 1000px;
+    }
+    .projects-container{
+    
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 !important;
+    }
+    
+    .project-card>*{
+        padding: 10px 0;
+        width: 100% !important;
+       
+    }
+    .ui.segment.project-card{
+        width: 120% !important;
+        max-width: 100%;
+        height: 200px;
+    }
+    }

@@ -8,17 +8,20 @@ import Sidebar from './Sidebar'
 import Navbar from './Navbar'
 import { Routes, Route, Link, Outlet, useNavigate } from 'react-router-dom';
 import Overview from './Overview'
+import { useAuth } from './contexts/AuthContext'
 
 
 
 
 export default function DashBoard() {
+  const {currentUser} = useAuth();
 const navigateTo = useNavigate();
-// useEffect(()=>{
 
-//   navigateTo('overview');
+useEffect(()=>{
+  if (!currentUser)
+  navigateTo('/login');
 
-// },[])
+},[])
   return (
     
     <div className="dashboard">

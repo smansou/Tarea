@@ -34,9 +34,11 @@ root.render(
         <Route path='/' element={<HomePage />}></Route>
         <Route path='Login' element={<LoginPage />}></Route>
         <Route path='Signup' element={<SignUP />} ></Route>
-        <Route path='task-overview' element={<TaskOverview />} ></Route> //?
         <Route path='Dashboard' element={<DashBoard />} >
-            <Route exact path='project-overview/:id' element={<ProjectOverview />} ></Route>
+            <Route exact path='project-overview/:id' element={<ProjectOverview />} >
+        <Route path='task-overview/:id' element={<TaskOverview />} ></Route> //?
+
+            </Route>
             <Route exact path='Overview' element={<Overview />} ></Route>
           <Route exact path='Projects' element={<Projects />} >
           

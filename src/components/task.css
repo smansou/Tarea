@@ -1,13 +1,32 @@
-
-
-
-.task-container{
+.task-container {
     padding: 5px;
     margin: 5px;
     width: 100%;
     max-width: 500px;
     height: 8rem;
 }
-.project-cards{
+
+.project-cards {
     width: 100% !important;
+}
+.taskWrapper{
+    /* background-color: red; */
+   width: 100%;
+   border: 1px solid black;
+
+}
+
+/* ----------------------------/* --------taskOverview----------/* -----------------------*/
+
+.task-flex {
+    position: fixed;
+    transform: translate(10%, 10%);
+ 
+}
+.raised-task-card{
+    height: 500px !important;
+    width: 500px !important;
+}
+@media (max-width : 768px){
+    
 }

@@ -67,27 +67,32 @@ import GlobalContext from './contexts/GlobalContext';
   }
 
   return (
+    <div className="task-form-container">
     <form onSubmit={ handleSubmit } className='ui form taskForm'>
-      <i onClick={handleClose} className='x icon'></i>
      <div>   
+      <i onClick={handleClose} className='x icon xicon'></i>
+      <div className="task-inputs">
     <p>Task Name</p>
     <input className='add-task-field1' ref={taskNameRef} name={'name'} onChange={handleChange} type="text"/>
-    </div>
+    
      <div>   
     <p>Task description</p>
     <input className='add-task-field2' ref={taskInfoRef} name={'info'} onChange={handleChange} type="text"  />
     </div>
+    
     <p>Task deadline</p>
     
     <div className="date-container">
     <DatePicker
     dateFormat="dd/MM/yyyy"
     onChange={handleDateChange}
-  />
+    />
     </div>
-    <br/>
+    </div>
+    </div>
     <button className='ui button taskBtn' type='submit'>Done</button>
     </form>
+    </div>
   )
 }
 
