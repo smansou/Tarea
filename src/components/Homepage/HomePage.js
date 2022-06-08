@@ -31,9 +31,9 @@ function HomePage() {
         </div>
       </nav>
       <div className="ui content container">
-        <h1 className="ui inverted header">Create powerful workflows for your team</h1>
+        <h1 className="ui inverted header">Create powerful workflows for your team .</h1>
         <p>
-        A user-first, visual, workflow management platform.
+        A visual, user-friendly workflow management platform. <br/>
         </p>
         <div onClick={()=>navigateTo('/login')}  className="ui huge inverted button">Try Now </div>
       </div>

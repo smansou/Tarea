@@ -16,6 +16,9 @@
     width: 100vw !important;
 
 }
+.task-card{
+    width: 100% !important;
+}
 
 .container{
     display: flex;
@@ -30,9 +33,20 @@ width: 100% ;
 }
 .content{
     margin-left: 20px ;
-    width: 100%;
+    width: 50%;
     overflow: hidden;
+    text-align: center;
 }
+.add-btns-wrapper{
+    width: 100% !important;
+display: flex;
+justify-content: space-between;
+}
+.add-team-container{
+    display: flex;
+
+}
+
 
 .overviews{
     display: flex;
@@ -92,10 +106,13 @@ width: 100% ;
         width: 100%;
     }
     .content{
-        width: 100%;
+        width: 80%;
         padding: 0 !important;
+        margin-right: 30px;
         flex-grow: 0 !important;
+        text-align: center;
     }
+    
     .content::after{
         height: 10px !important;
         padding: 0 !important;

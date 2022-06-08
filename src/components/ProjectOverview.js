@@ -67,18 +67,19 @@ export default function ProjectOverview(props) {
             <>
         <div className="content">            
                 <div className="add-btns-wrapper" style={{display: `${isOwner}`}}>
-                <div onClick={()=>{setAddingTask(true)}} className="ui right floated small primary labeled icon button">
-                    <i className="add icon"></i> Add Task
+                <div onClick={()=>{setAddingTask(true)}} className="ui violet inverted right floated button">
+                    <i className="tasks icon"></i> Add Task
                 </div>
             <div className="add-team-container">
-            <button className='ui button' onClick={() =>addingTeam ? setAddingTeam(false) : setAddingTeam(true)}>add team member</button>
+            <button className='ui inverted violet button' onClick={() =>addingTeam ? setAddingTeam(false) : setAddingTeam(true)}>
+                <i className="add icon"></i>Add Team Member</button>
             </div>
             {addingTeam && <AddTeam projectId={contextValue[0].projectId} />}
 
             </div>
             {addingTask && <CreateTask projectId={contextValue[0].projectId} close={setAddingTask} />}
             <div className='ui segment' colSpan="5">
-            <div className="ui large green header">{contextValue[0].title}</div>
+            <div className="ui large violet header">{contextValue[0].title}</div>
             <p className='ui header'>{contextValue[0].info}</p>
             </div>
 
