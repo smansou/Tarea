@@ -20,16 +20,13 @@ function HomePage() {
 <>
   
     <title>Cover Template for Semantic-UI</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-      type="text/css"/>
+   
 
     <div className="ui inverted vertical center aligned segment home-background">
       <nav className="ui container">
         <h1 className="ui inverted header">Tarea</h1>
         <div className="ui borderless inverted compact menu">
-          <a className="active item">Home</a> <a className="item">About us</a>
+          <a className="active item">Home</a> <a onClick={()=>navigateTo('/login')} className="item">Login</a>
           <a className="item">Contact</a>
         </div>
       </nav>
@@ -38,13 +35,13 @@ function HomePage() {
         <p>
         A user-first, visual, workflow management platform.
         </p>
-        <div onClick={()=>navigateTo('/login')}  className="ui huge button">Try Now </div>
+        <div onClick={()=>navigateTo('/login')}  className="ui huge inverted button">Try Now </div>
       </div>
 
 
 
       <footer className="ui inverted vertical segment">
-        Built for <a href="http://semantic-ui.com"> Appleseeds </a> by
+        Built for <a href="#"> Appleseeds </a> by
         <a href="https://github.com/smansou"> Sobhi Mansour</a>.
       </footer>
     </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import BarChart from './BarChart'
 import NotePad from './Homepage/Notepad'
 import LineChart from './LineChart'
 import List from './List'
@@ -9,11 +10,10 @@ export default function Overview() {
           <div className="charts-wrapper">
 
           <div className="chart-container">
-            <LineChart />
+            <BarChart title={'Weekly Performance'} color={'blue'} />
+
           </div>
-          <div className="notepad">
             <NotePad />
-          </div>
           
           </div>
           <div className="stats-container">
@@ -21,9 +21,12 @@ export default function Overview() {
             <List />
           </div>
           <div className="list-container">
-           abcde
+          <LineChart title={'Completion Forecast'}  />
+
           </div>
+          
           </div>
+          
         </div>
   )
 }

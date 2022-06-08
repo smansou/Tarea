@@ -1,26 +1,15 @@
-/* .loginBackground{
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	font-family: 'Jost', sans-serif;
-	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-} */
+
 
 .loginWrapper{
     padding: 100px 35vw;
     width: 100vw;
     height: 100vh;
 	z-index: 8;
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #277996, #242827) !important;
-    background-size: 400% 400% !important;
-    animation:  15s ease infinite !important;
-    -webkit-animation:  15s ease infinite !important;
-    height: 100vh !important;
+	background: no-repeat center url('./../../assets/images/cool-background-blue.png') !important;
+	background-size: 150% !important;
 	
 }
+
 .popup-message{
 	position: absolute;
 	text-align: center;
@@ -29,7 +18,7 @@
 }
 
 .login-main{
-	background-color: rgba(216, 213, 221, 0.814);
+	background-color: rgba(255, 255, 255, 0.298);
 	width: 400px;
 	height: 550px;
 	overflow: hidden;
@@ -46,7 +35,7 @@
 }
 .loginLabel{
 	padding-top: 10px;
-	color: #fff;
+	color: rgb(255, 255, 255);
 	font-size: 2.3em;
 	justify-content: center;
 	display: flex;
@@ -58,7 +47,7 @@
 .login-input{
 	width: 60%;
 	height: 40px;
-	background: #e0dede;
+	background: #ffffffa3;
 	justify-content: center;
 	display: flex;
 	margin: 20px auto;
@@ -98,7 +87,7 @@
 	transition: .8s ease-in-out;
 }
 .login .loginLabel{
-	color: #573b8a;
+	color: #ffffff;
 	transform: scale(.6);
 }
 
@@ -113,3 +102,15 @@
 }
 
 
+
+@media (max-width: 768px) {
+	.loginWrapper {
+	  background-size: 200vh !important;
+	}
+	.login-main{
+		transform: translateX(-30%);
+	}
+  
+
+
+  }

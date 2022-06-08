@@ -3,6 +3,7 @@ import { useAuth } from './contexts/AuthContext';
 import {Link} from 'react-router-dom';
 import { useNavigate} from "react-router-dom";
 import './loginPage.css'
+import Spinner from './Spinner';
 
 
 
@@ -60,7 +61,8 @@ function LoginPage(props) {
 
   return (
 
-<div className="loginWrapper">
+<div className="loginWrapper">  
+    {loading ? <Spinner /> :
 	<div className="login-main">  	
 		<input type="checkbox" id="chk" aria-hidden="true"/>
 
@@ -83,9 +85,11 @@ function LoginPage(props) {
 					<button className='login-btn' type={'submit'}>Sign in</button>
 				</form>
 			</div>
+    
 	</div>
+}
   </div>
-
+  
   );
 }
 

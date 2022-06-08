@@ -8,9 +8,8 @@ import { useNavigate} from "react-router-dom";
 
 export default function Navbar() {
 
-       const { logout } = useAuth();
+       const { logout, currentUser } = useAuth();
     const navigateTo = useNavigate();
-
 
   const handleLogOut = async () => {
      logout()

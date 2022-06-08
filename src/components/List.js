@@ -3,7 +3,7 @@ import React from 'react'
 export default function List() {
   return (
   
-    <table className="ui celled table ">
+    <table className="ui celled table home-list">
     <thead>
       <tr>
   <th>Name</th>

@@ -1,7 +1,7 @@
 
 .ui.compact.table{
-    background-color: transparent !important;
-    border: none;
+    background-color: white !important;
+    border: none !important;
     width: 100% !important;
 
 }
@@ -11,6 +11,7 @@
     cursor: pointer;
     background-color: rgba(231, 231, 231, 0.726);
 }
+
 .taskWrapper .taskWrapper{
     width: 100vw !important;
 
@@ -29,7 +30,7 @@ width: 100% ;
 }
 .content{
     margin-left: 20px ;
-    width: 50%;
+    width: 100%;
     overflow: hidden;
 }
 

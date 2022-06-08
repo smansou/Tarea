@@ -29,15 +29,14 @@ useEffect(()=>{
       <Navbar />
       <div className='main-content'>
         <Outlet />
-      
       </div>
 
       <div className='container'>
         <Sidebar />
 
-
       </div>
     </div>
+    
 
 
   )

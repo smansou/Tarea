@@ -13,14 +13,14 @@ const [state, setState] = useState({
       {
         
         label: props.title,
-        backgroundColor: props.color,
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
         height: '500px',
         width: '1000px',
-        borderColor: 'rgba(0,0,0,1)',
-        borderWidth: 1,
-        tension: 0.2,
-        fill: props.fill,
-        data: [65, 59, 80, 81, 56],
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 3,
+        tension: 0,
+        fill: true,
+        data: [22, 18, 60, 22, 80, 33, 56, 37, 18, 79, 50, 80, 89, 48, 16, 5]
        
       },
   

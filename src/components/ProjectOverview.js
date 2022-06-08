@@ -9,6 +9,7 @@ import { useAuth } from './contexts/AuthContext';
 import { MyGlobalContext } from './contexts/GlobalContext';
 import CreateTask from './CreateTask';
 import TaskOverview from './TaskOverview';
+import Spinner from './Spinner';
 
 
 export default function ProjectOverview(props) {
@@ -25,6 +26,7 @@ export default function ProjectOverview(props) {
     const navigateTo = useNavigate();
 
     useEffect(() => {
+        setLoading(true);
         currentUser.email == contextValue[0].projectOwner ? setisOwner('block') : setisOwner('none');
         const projectRef = doc(db, 'projects', `${user.id}`);
         getDoc(projectRef)
@@ -60,6 +62,9 @@ export default function ProjectOverview(props) {
    
     return (
         <div className='tasks-projects-wrapper'>
+            { loading ? <Spinner /> : 
+          
+            <>
         <div className="content">            
                 <div className="add-btns-wrapper" style={{display: `${isOwner}`}}>
                 <div onClick={()=>{setAddingTask(true)}} className="ui right floated small primary labeled icon button">
@@ -97,9 +102,14 @@ export default function ProjectOverview(props) {
         <div className="right-half">
             <Outlet />
             {taskOpen && <TaskOverview name={currentTask.name} deadline={currentTask.deadline} info={currentTask.info} completed={currentTask.completed}  /> }
-
+            
         </div>
+        
+        
+        </>
+        }
             </div>
+
     )
 }
 

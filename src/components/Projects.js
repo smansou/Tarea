@@ -9,6 +9,7 @@ import './projects.css'
 import { Link, Outlet } from 'react-router-dom';
 import { MyGlobalContext } from './contexts/GlobalContext';
 import { textSync } from 'figlet';
+import Spinner from './Spinner';
 
 export default function Projects() {
    
@@ -33,7 +34,7 @@ export default function Projects() {
 
     //? get all projects where the current user's email is listed in Team Array
     useEffect(() => {
-
+        setLoading(true);
         const projectsRef = collection(db, 'projects');
         let allProjects = [];
         const q = query(projectsRef, where("team", "array-contains", currentUser.email))
@@ -88,6 +89,8 @@ export default function Projects() {
         navigateTo(`/dashboard/project-overview/${projID}`);
     }
     return (
+        <>
+        {loading ? <Spinner /> :
         <div className='overviews'>
             
         <div className='projects-container'> {!loading && mapProjects()} </div>
@@ -105,6 +108,8 @@ export default function Projects() {
                 
             
         </div>
+}
+        </>
     )
 }
 

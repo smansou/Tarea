@@ -30,7 +30,6 @@ import GlobalContext from './contexts/GlobalContext';
     });
     useEffect(() => {
       setTaskState({...taskState, taskID: Math.floor(Math.random()*6000000)})
-      console.log(props.projectId);
     }, [])
     
 
