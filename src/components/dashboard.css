@@ -26,7 +26,10 @@ body ::-webkit-scrollbar {
    margin-right: 40px;
    
  }
-
+.hoverable:hover{
+  background-color: rgb(144, 108, 212) !important;
+  cursor: pointer;
+}
  .bar-chart>*{
    height: 400px !important;
    width: 700px !important;

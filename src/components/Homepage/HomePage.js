@@ -18,8 +18,6 @@ function HomePage() {
   return (
 
 <>
-  
-    <title>Cover Template for Semantic-UI</title>
    
 
     <div className="ui inverted vertical center aligned segment home-background">
@@ -33,7 +31,7 @@ function HomePage() {
       <div className="ui content container">
         <h1 className="ui inverted header">Create powerful workflows for your team .</h1>
         <p>
-        A visual, user-friendly workflow management platform. <br/>
+        A visual, user-friendly workflow management platform.
         </p>
         <div onClick={()=>navigateTo('/login')}  className="ui huge inverted button">Try Now </div>
       </div>

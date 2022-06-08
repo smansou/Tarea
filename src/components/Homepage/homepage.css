@@ -96,8 +96,8 @@ nav.ui.container .ui.inverted.compact.menu .active.item {
 
 
 .home-background {
-  background: no-repeat center/100% url('../../../assets/images/cool-background-blue.png') !important;
-
+  background: no-repeat url('../../../assets/images/cool-background-blue.png') !important;
+  background-size: 210vh !important;
 }
 
 @keyframes gradient {

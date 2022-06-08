@@ -22,26 +22,26 @@ export default function Navbar() {
   <a href="#" className="sidebar-menu-toggler item" data-target="#sidebar">
     <i className="sidebar icon"></i>
   </a>
-  <a href="#" className="header item">
-    Tarea
+  <a onClick={()=>{navigateTo('/')}} href="#" className="header item">
+    <h3> Tarea </h3>
   </a>
 </div>
 
 <div className="right menu">
-  <a href="#" className="item">
+  <a href="#" className="item hoverable">
     <i className="bell icon"></i>
   </a>
-      <div onClick={handleLogOut} className="item">
+      <div onClick={handleLogOut} className="item hoverable">
         <i className="sign-out icon"></i>
         Logout
       </div>
   <div className="ui dropdown item">
     <i className="user cirlce icon"></i>
     <div className="menu">
-      <a href="#" className="item">
+      <a href="#" className="item hoverable">
         <i className="info circle icon"></i> Profile</a
       >
-      <a href="#" className="item">
+      <a href="#" className="item hoverable">
         <i className="wrench icon"></i>
         Settings</a>
     </div>
