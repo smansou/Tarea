@@ -9,49 +9,24 @@ export default function ProjectCard(props) {
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState([]);
     const [project, setProject] = useState([]);
-    //   useEffect(() => {
-    //     const docRef = doc(db, 'projects');
-    //     let project = [];
-    //             const q = query(docRef, where("team", "array-contains", ''))
-
-    //     getDocs(q)
-    //         .then((snapshot) => {
-    //             snapshot.docs.forEach((doc) => {
-    //                 project.push({ ...doc.data(), id: doc.id });
-    //             })
-    //             setProject(project);
-    //             setLoading(false);
-    //         }).catch((error) => {
-    //             console.log(error, "failed to fetch tasks");
-    //         })
-    // }, []);
-
-    // onSnapshot()
-
+// onSnapshot()
     return (
 
-        <div className="ui card projectCard">
-            {/* <div className="div-color" style={{borderRadius:'50% ',width:'100%', height: '40px', backgroundColor:'#CF9FFF', marginTop: '10px', transform:'translatey(-30px)'}}></div> */}
-            <div className="header ui">{props.name}</div>
-            <span className="time">Created: {props.createdAt} </span>
-            <div className="content">
-                <div className="meta">
-                </div>
-                {/* <div className="description"> */}
-                    <p className="ui justified container">
+        <div className="projectCard">
+            <div className="name-created">
+                   <p className="project-name">{props.name}</p>
+            Created: {props.createdAt}
+            </div>
+                    <p className="project-info">
                         {props.info}
                     </p>
-                {/* </div> */}
-            </div>
-            <div className="extra content">
-                <div className="right floated author">
+                <div className="">
                         {props.team}  {/* add team avatatrs*/}
-                  
                 </div>
-            </div>
-            <div className="progress-bar">
+      
+
             <progress className='progress-bar' value={props.tasks.filter(e=>e.completed).length} max={props.tasks.length}></progress>
-            </div>
+            
         </div>
 
     )
@@ -63,6 +38,20 @@ export default function ProjectCard(props) {
 
 
 
-
+// <div className="ui card projectCard">
+// <div className="header ui">{props.name}</div>
+// <span className="time">Created: {props.createdAt} </span>
+//         <p className="ui justified container">
+//             {props.info}
+//         </p>
+// <div className="extra content">
+//     <div className="right floated author">
+//             {props.team}  {/* add team avatatrs*/}
+//     </div>
+// </div>
+// <div className="progress-bar">
+// <progress className='progress-bar' value={props.tasks.filter(e=>e.completed).length} max={props.tasks.length}></progress>
+// </div>
+// </div>
 
 

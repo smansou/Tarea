@@ -2,7 +2,7 @@
 
 .loginWrapper{
     padding: 100px 35vw;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 	z-index: 8;
 	background: no-repeat center url('./../../assets/images/cool-background-blue.png') !important;
@@ -106,11 +106,19 @@
 @media (max-width: 768px) {
 	.loginWrapper {
 	  background-size: 200vh !important;
+	  height: 100%;
+	  width: 100%;
+	  overflow: hidden;
+	  padding: 0;
 	}
 	.login-main{
-		transform: translateX(-30%);
+		/* transform: translateX(-34%); */
+		width: 100%;
+		height: 100%;
+		padding-top: 30%;
+
 	}
-  
+	
 
 
   }

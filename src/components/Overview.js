@@ -1,10 +1,14 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import BarChart from './BarChart'
 import NotePad from './Homepage/Notepad'
 import LineChart from './LineChart'
 import List from './List'
+import { collection, doc, getDoc, updateDoc, arrayUnion, arrayRemove, query, where, setDoc, deleteField } from 'firebase/firestore'
+import { db } from '../firebase/firebase';
+
 
 export default function Overview() {
+  
   return (
     <div className="stat-chart-wrapper">
           <div className="charts-wrapper">
@@ -29,4 +33,5 @@ export default function Overview() {
           
         </div>
   )
+
 }

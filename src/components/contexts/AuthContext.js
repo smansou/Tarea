@@ -26,6 +26,7 @@ export function AuthProvider({ children }) {
         return auth.signOut();
     }
     
+    //* listens for changes in current sign in (user change), and sets new user (null until next login) 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user);

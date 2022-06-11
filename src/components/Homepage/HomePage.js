@@ -1,5 +1,4 @@
 import LoginPage from '../LoginPage';
-import SignUP from '../SignUp';
 import DashBoard from '../DashBoard';
 import { AuthProvider } from '../contexts/AuthContext';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';

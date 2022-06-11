@@ -4,7 +4,6 @@ import './index.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import DashBoard from './components/DashBoard';
 import LoginPage from './components/LoginPage'
-import SignUP from './components/SignUp';
 import CreateTask from './components/CreateTask';
 import CreateProject from './components/CreateProject';
 import Projects from './components/Projects';
@@ -33,7 +32,6 @@ root.render(
       <Routes>
         <Route path='/' element={<HomePage />}></Route>
         <Route path='Login' element={<LoginPage />}></Route>
-        <Route path='Signup' element={<SignUP />} ></Route>
         <Route path='Dashboard' element={<DashBoard />} >
             <Route exact path='project-overview/:id' element={<ProjectOverview />} >
         <Route path='task-overview/:id' element={<TaskOverview />} ></Route> //?

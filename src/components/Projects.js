@@ -8,11 +8,10 @@ import ProjectOverview from './ProjectOverview';
 import './projects.css'
 import { Link, Outlet } from 'react-router-dom';
 import { MyGlobalContext } from './contexts/GlobalContext';
-import { textSync } from 'figlet';
 import Spinner from './Spinner';
 
 export default function Projects() {
-   
+
     const navigateTo = useNavigate();
     const { currentUser } = useAuth();
     const [projects, setProjects] = useState([]);
@@ -22,7 +21,6 @@ export default function Projects() {
     const [email, setEmail] = useState();
 
     const contextValue = useContext(MyGlobalContext);
-
     const [currentProject, setCurrentProject] = useState({
         title: '',
         id: '',
@@ -30,9 +28,14 @@ export default function Projects() {
         team: '',
         owner: '',
     });
+    const epochToDate = (epoch) =>{
+        // // const createdDate = new Date(epoch);
+        // // console.log(createdDate.getFullYear());
+        // console.log(epoch.seconds || epoch);    
+    }
+   
 
-
-    //? get all projects where the current user's email is listed in Team Array
+    //*  get all projects where the current user's email is listed in Team Array
     useEffect(() => {
         setLoading(true);
         const projectsRef = collection(db, 'projects');
@@ -55,9 +58,9 @@ export default function Projects() {
     const mapProjects = () => {
         return projects.map((project) => {
             return (
-                <div className='ui segment project-card'
+                <div className='project-card-wrapper'
                     onClick={() => handleProjectChoice(project.id)}
-                    value={project.id} 
+                    value={project.id}
                     key={project.id}
                 >
                     <ProjectCard
@@ -66,7 +69,7 @@ export default function Projects() {
                         projectID={project.id}
                         team={project.team}
                         tasks={project.tasks}
-                        createdAt={Date(project.created).slice(3, 16)}
+                        createdAt={Date(project.created).slice(3, 16)}  //!!!!fix!!!!!!!!
                     />
                     <Link to={`/dashboard/project-overview/${project.id}`} />
                 </div>
@@ -83,32 +86,25 @@ export default function Projects() {
             tasks: [current.tasks],
             owner: [current.owner],
         })
-        
-       //  contextValue[1] is a function which updates global context
-        contextValue[1]({title: current.name, projectOwner: current.owner, projectId: projID, info: current.info, team: [...current.team] });
+        //*  contextValue[1] is setGlobalContext()
+        contextValue[1]({...contextValue[0], title: current.name, projectOwner: current.owner, projectId: projID, info: current.info, team: [...current.team] });
         navigateTo(`/dashboard/project-overview/${projID}`);
     }
     return (
         <>
-        {loading ? <Spinner /> :
-        <div className='overviews'>
-            
-        <div className='projects-container'> {!loading && mapProjects()} </div>
-                
+            {loading ? <Spinner /> :
+                    <>
+                    <div className='projects-container'> {!loading && mapProjects()} </div>
                     <div className='project-task-container'>
-                       
-                        {!showProjectList && <ProjectOverview 
-                    // <ProjectOverview
+                        {!showProjectList && <ProjectOverview
                             title={currentProject.title || ''}
                             info={currentProject.info || ''}
                             team={currentProject.team || ''}
                             projectId={currentProject.id || ''} />
                         }
                     </div>
-                
-            
-        </div>
-}
+                </>
+            }
         </>
     )
 }

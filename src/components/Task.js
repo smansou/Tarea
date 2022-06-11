@@ -13,12 +13,12 @@ export default function Task(props) {
   },[])
 
   const handleCompletionChange = (e) => {
-    //? update DB 
     //!  props.taskId 
     const docRef = doc(db, 'projects', props.projectId);
     getDoc(docRef).then((res) => {
       let tasksArray = [...res.data().tasks];
       let taskIndex = tasksArray.indexOf(tasksArray.find((task, index) => task.taskID == props.taskId));
+        let comlpeted = tasksArray[taskIndex].completed; 
       tasksArray[taskIndex].completed ?
         tasksArray[taskIndex].completed = false :
         tasksArray[taskIndex].completed = true;
@@ -34,26 +34,14 @@ export default function Task(props) {
         console.log(error, 'failed to submit data');
       })
   }
-
-
-  // const handleTaskChoice = () => {
-    
-  // }
-
-
   return (
-
     <tr className='task-row' onClick={()=>props.toggleTask(props.taskId)}>
 
       <td><div className='ui small header'>{props.taskName}</div></td>
       <td>{props.taskDeadline}</td>
       <td>{props.taskInfo}</td>
-      {/* <td>No</td> */}
       <td className="collapsing task-container">
-        {/* <div className="ui toggle checkbox"> */}
-          {/* <input onChange={handleCompletionChange} type="checkbox" checked={completed} /> <label></label> */}
           <Checkbox checked={completed} onChangeCallback={handleCompletionChange}/>
-        {/* </div> */}
       </td>
     </tr>
 
@@ -62,12 +50,3 @@ export default function Task(props) {
 
 
 
-{/* <div className='task-container'>
-             <div>{props.iid}</div>
-             <label > {props.taskName} </label>
-             <div>{props.taskDeadline}</div>
-             <div>{props.dateCreated}</div>
-             <div >{props.taskInfo}</div>
-            <input onChange={handleCompletionChange} type="checkbox" checked={completed} />
-             
-        </div> */}

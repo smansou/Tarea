@@ -11,7 +11,7 @@ export default function TaskOverview(props) {
       <span className="category">{props.deadline}</span>
     </div>
     <div className="description">
-    <h4 class="ui horizontal divider header">
+    <h4 className="ui horizontal divider header">
     <div className="ui violet header">{props.name}</div>
 </h4>
       <p>{props.info}</p>

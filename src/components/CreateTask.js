@@ -6,20 +6,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 import { db } from '../firebase/firebase';
 import { collection, doc, getDoc, query, where, addDoc, updateDoc, FieldValue, arrayUnion } from 'firebase/firestore';
-import GlobalContext from './contexts/GlobalContext';
+import { MyGlobalContext } from './contexts/GlobalContext';
 
 
 
 
 
  function CreateTask(props) {
-    // const [startDate, setStartDate] = useState(new Date());
     const [loading, setLoading] = useState(false);
     const [currentProject, setCurrentProject] = useState();
     const taskNameRef = useRef();
     const taskInfoRef = useRef();
     const navigateTo = useNavigate();
-    const contextValue = useContext(GlobalContext);
+    const contextValue = useContext(MyGlobalContext);
     const [taskState, setTaskState] = useState({
       taskID: '',
       name:'',
@@ -60,9 +59,9 @@ import GlobalContext from './contexts/GlobalContext';
      const d = new Date(date).toLocaleDateString('fr-FR');
      setTaskState({...taskState, deadline: d})
     }
-    //opens and closes parent itself using parent CB
+    //opens and closes itself from parent  ( CB )
     const handleClose = () => {
-      props.close(false);
+      props.close();
   }
 
   return (

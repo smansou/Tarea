@@ -52,9 +52,6 @@ class NotePad extends React.Component {
               value={this.state.notesText}
               onChange={this.onChangeValue}
             />
-            {/* <button className="save-button" onClick={this.onSaveNotes}>
-              Save
-            </button> */}
           </div>
         </div>
         <div className="display-notes">

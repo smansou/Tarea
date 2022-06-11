@@ -9,7 +9,8 @@ export default function GlobalContext({children, props}) {
         id:' ',
         info:' ',
         team: ' ',
-        projectId:' '
+        projectId:' ',
+        darkTheme: false,
     });
    
     return (

@@ -36,7 +36,7 @@ export default function ProjectOverview(props) {
             }).catch((error) => {
                 console.log(error, "failed to fetch Tasks");
             })
-    }, []);
+    }, [addingTask]);
     const toggleTask = (id) => {
         let task = tasks.find((task)=>task.taskID === id);
         setCurrentTask(task)
@@ -66,6 +66,11 @@ export default function ProjectOverview(props) {
           
             <>
         <div className="content">            
+            {addingTask && <CreateTask projectId={contextValue[0].projectId} close={()=>{setAddingTask(false)}} />}
+            <div className='ui segment' colSpan="5">
+            <div className="ui large violet header">{contextValue[0].title}</div>
+            <p className='ui header'>{contextValue[0].info}</p>
+            </div>
                 <div className="add-btns-wrapper" style={{display: `${isOwner}`}}>
                 <div onClick={()=>{setAddingTask(true)}} className="ui violet inverted right floated button">
                     <i className="tasks icon"></i> Add Task
@@ -76,11 +81,6 @@ export default function ProjectOverview(props) {
             </div>
             {addingTeam && <AddTeam projectId={contextValue[0].projectId} />}
 
-            </div>
-            {addingTask && <CreateTask projectId={contextValue[0].projectId} close={setAddingTask} />}
-            <div className='ui segment' colSpan="5">
-            <div className="ui large violet header">{contextValue[0].title}</div>
-            <p className='ui header'>{contextValue[0].info}</p>
             </div>
 
             <table className="ui compact table">

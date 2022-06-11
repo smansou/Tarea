@@ -16,7 +16,7 @@ export default function AddTeam(props) {
         setTeamMemberEmail( e.target.value)
 
     }
-    //get project ID props.projectID , get whole project doc from DB append to team array =>update DB
+    //*get project ID props.projectID => get whole project doc from DB => append to team array =>update DB
     const handleAddTeamMember = async (e) => {
         e.preventDefault();
         const docRef = doc(db, 'projects', props.projectId);  
@@ -49,7 +49,7 @@ export default function AddTeam(props) {
 
 
                 <br />
-                <button className='ui button' type='submit'> Confirm </button>
+                <button className='ui small violet inverted button' type='submit'> Confirm </button>
 
             </form>
             </div>
