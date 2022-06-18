@@ -1,0 +1,95 @@
+.c-dashboardInfo {
+  width: 100%;
+  height: 100%;
+}
+
+.overview-cards {
+  max-height: 160px;
+  max-width: 170px;
+  box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+
+
+}
+
+.c-dashboardInfo {
+  margin-bottom: 15px;
+}
+
+.c-dashboardInfo .wrap {
+  background: var(--primaryColor);
+  box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 25px 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.c-dashboardInfo__title,
+.c-dashboardInfo__subInfo {
+  color: rgba(232, 102, 46, 0.903);
+  font-size: 1.18em;
+}
+
+.c-dashboardInfo span {
+  display: block;
+}
+
+.c-dashboardInfo__count {
+  font-weight: 600;
+  font-size: 2.5em;
+  line-height: 64px;
+  color: rgba(232, 102, 46, 0.903);
+}
+
+.c-dashboardInfo .wrap:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  content: "";
+}
+
+
+.c-dashboardInfo:nth-child(1) .wrap:after {
+  background: var(--secondaryColor);
+}
+
+.c-dashboardInfo__title svg {
+  color: #d7d7d7;
+  margin-left: 5px;
+}
+
+.MuiSvgIcon-root-19 {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 24px;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+@media(max-width:920px) {
+  .overview-cards {
+    max-height: 60px;
+    max-width: 1000px;
+    width: 90%;
+    box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+  }
+
+  .overview-cards {
+    margin: 10px;
+    box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+
+
+  }
+}

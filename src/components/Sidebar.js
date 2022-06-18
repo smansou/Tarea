@@ -24,30 +24,32 @@ export default function Sidebar() {
                         Administration
                     </div>
                     <div className="menu">
-                            <div className="item hoverable"><i className="cogs icon"></i>Settings</div>
+                            <div className="item "><i className="cogs icon"></i>Settings</div>
 
-                            <div className='item hoverable'><i className="users icon"></i>Team</div>               
+                            <div className='item '><i className="users icon"></i>Team</div>               
                     </div>
                 </div>
                         <Link to={'projects'}>
-                    <div className="item hoverable">
+                    <div className=" hoverable item">
                         <i className=" icon chart line"></i>
                             Projects 
                     </div>
                             </Link>
+                            <Link to={'create-project'}>
                     <div className="item hoverable">
                         <i className="icon lightbulb"></i>
-                        <Link to={'create-project'}>Create New Project</Link>
+                        Create New Project
                     </div>
+                    </Link>
                 <div className="item">
                     <div className="header">Other</div>
                     <div className="menu">
-                            <div className="item hoverable">
+                            <div className="item ">
                                 <i className="icon envelope"></i>
                                 Messages
                             </div>
 
-                            <div className="item hoverable">
+                            <div className="item ">
                                 <i className="icon calendar alternate"></i>
                                 Calendar
                             </div>

@@ -7,7 +7,7 @@ import ProjectOverview from './ProjectOverview'
 import Sidebar from './Sidebar'
 import Navbar from './Navbar'
 import { Routes, Route, Link, Outlet, useNavigate } from 'react-router-dom';
-import Overview from './Overview';
+import Overview from './Overview'
 import { useAuth } from './contexts/AuthContext';
 import { MyGlobalContext } from './contexts/GlobalContext';
 

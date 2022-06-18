@@ -29,8 +29,6 @@ export default function Projects() {
         owner: '',
     });
     const epochToDate = (epoch) =>{
-        // // const createdDate = new Date(epoch);
-        // // console.log(createdDate.getFullYear());
         // console.log(epoch.seconds || epoch);    
     }
    
@@ -53,8 +51,7 @@ export default function Projects() {
                 console.log(error, "failed to fetch projects");
             })
     }, []);
-
-
+    
     const mapProjects = () => {
         return projects.map((project) => {
             return (

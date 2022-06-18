@@ -18,7 +18,6 @@ export default function Task(props) {
     getDoc(docRef).then((res) => {
       let tasksArray = [...res.data().tasks];
       let taskIndex = tasksArray.indexOf(tasksArray.find((task, index) => task.taskID == props.taskId));
-        let comlpeted = tasksArray[taskIndex].completed; 
       tasksArray[taskIndex].completed ?
         tasksArray[taskIndex].completed = false :
         tasksArray[taskIndex].completed = true;

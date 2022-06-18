@@ -1,62 +1,65 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { useAuth } from './contexts/AuthContext';
+import { collection, doc, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../firebase/firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import './list.css'
+import { faker } from '@faker-js/faker';
+
 
 export default function List() {
+  const [projects, setProjects] = useState([]);
+  const { currentUser } = useAuth();
+  const navigateTo = useNavigate();
+
+  useEffect(() => {
+    // setLoading(true);
+    const projectsRef = collection(db, 'projects');
+    let allProjects = [];
+    const q = query(projectsRef, where("team", "array-contains", currentUser.email))
+    getDocs(q)
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          allProjects.push({ ...doc.data(), id: doc.id });
+        })
+        setProjects(allProjects);
+        // setLoading(false);
+      }).catch((error) => {
+        console.log(error, "failed to fetch projects");
+      })
+  }, []);
+
+  const mapProjects = () => {
+    return projects.map((project,i) => {
+      while(i<5){
+        return (
+            <div className='project-list-item'
+                onClick={() => navigateTo(`/dashboard/project-overview/${project.id}`)}
+                key={project.id}
+            >
+              <div className="project-image-box">
+                <img src={faker.image.avatar()} className="project-image"/>
+              </div>
+              <div className="project-name">{project.name}</div>
+              <div className="view-project">view</div>
+                <Link to={`/dashboard/project-overview/${project.id}`} />
+            </div>
+        )
+      }
+    })
+  
+}
+
+
+
   return (
-  
-    <table className="ui celled table home-list">
-    <thead>
-      <tr>
-  <th>Name</th>
-  <th>Status</th>
-  <th>Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-     
-      <tr>
-  <td>My first Project</td>
-  <td>In Progress</td>
-  <td className="warning">
-    <i className="attention icon"></i>
-    Attention Needed
-  </td>
-      </tr>
-      <tr>
-  <td>Project 3</td>
-  <td>In Progress</td>
-  <td className="negative">
-  <i className="attention icon"></i>
-      Attention Needed</td>
-      </tr>
-      <tr>
-  <td>Project</td>
-  <td>Completed</td>
-  <td className="positive">
-    <i className="icon checkmark"></i> Positive
-  </td>
-      </tr>
-      <tr>
-  <td>HR Interviews</td>
-  <td>Completed</td>
-  <td className="positive">
-    <i className="icon checkmark"></i> Positive
-  </td>
-      </tr>
-      <tr>
-  <td>Product Design Project</td>
-  <td>Completed</td>
-  <td className="positive">
-    <i className="icon checkmark"></i> Positive
-  </td>
-      </tr>
-      <tr className="negative">
-  <td>Data Analysis Project</td>
-  <td>Value</td>
-  <td><i className="icon attention"></i> Attention needed</td>
-      </tr>
-    </tbody>
-  </table>
-  
+    <>
+      <div className="list-title">Projects Overview</div>
+      <div className="project-list-table">
+    {mapProjects()}
+        <div onClick={()=>navigateTo('/dashboard/projects')} className="view-all">View all</div>
+      </div>
+    </>
   )
 }
 

@@ -11,7 +11,7 @@ progress {
     border-radius: 25px;
   }
   progress::-webkit-progress-value {
-    background-color: rgb(97, 209, 97);
+    background: var(--secondaryColor);
     border-radius: 7px;
     border-radius: 25px;
     margin-bottom: 5px;
@@ -48,13 +48,54 @@ progress {
  width: 100%; 
  padding: 30px 40px;
 }
-.project-name{
-  font-size: 1.3rem;
-  color: rgb(105, 44, 186)
+.name-created{
+  background: var(--primaryColor);
+  border-radius: 10px;
+}
+.created{
+  font-size: 1rem;
+  padding: 0px 0px 0px 5px ;
+
+}
+.name-created>.project-name{
+  padding: 5px 0px 0px 5px ;
+  color: rgba(26, 22, 97, 0.907);
+  font-size: 1.4rem;
+  
+}
+.create-project-wrapper{
+  transform: translate(50%, 20%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 300px;
+  border-radius: 15px;
+  background-color: white;
+}
+.create-form{
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+.project-description-box>*{
+  height: 120px;
 }
 
   @media (max-width: 800px){
     .project-card-wrapper{
       width: 90%;
   }
+
+  .create-project-wrapper{
+    transform: translate(00%, 00%);
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background-color: white;
+  }
+  .create-form>*{
+  margin-top: 40px;
+  }
+
 }

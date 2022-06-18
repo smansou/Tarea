@@ -27,7 +27,7 @@ export default function CreateProject() {
 
   const handleChange = async (e) => {
     const projectsRef = collection(db, 'projects');
-    setProjectState({...projectState, [e.target.name]: e.target.value })
+    setProjectState({...projectState, [e.target.name]: e.target.value, projectID: Math.floor(Math.random()*99999999) })
     
     }
 
@@ -46,15 +46,15 @@ await addDoc(collection(db, 'projects'), {...projectState})
   }
 
   return (
-
-    <form onSubmit={handleSubmit} className='ui form'>
+    <div className="create-project-wrapper">
+    <form onSubmit={handleSubmit} className='ui form create-form'>
       <div>
         <label>Project Name</label>
         <input name={'name'} ref={projectNameRef} onChange={handleChange}
           type="text" placeholder='project Name'
         />
       </div>
-      <div>
+      <div className='project-description-box'>
         <label>Project description</label>
         <input name={'info'} ref={projectInfoRef} onChange={handleChange}
           type="text" placeholder='Project Description'
@@ -64,5 +64,6 @@ await addDoc(collection(db, 'projects'), {...projectState})
       <button className='ui button' type='submit'>Create New Project</button>
 
     </form>
+    </div>
   )
 }

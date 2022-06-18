@@ -15,7 +15,7 @@ export default function ProjectCard(props) {
         <div className="projectCard">
             <div className="name-created">
                    <p className="project-name">{props.name}</p>
-            Created: {props.createdAt}
+            <div className="created">Created: {props.createdAt}</div> 
             </div>
                     <p className="project-info">
                         {props.info}

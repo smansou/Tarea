@@ -8,36 +8,25 @@ nav{
   height: 56px !important;
 }
   .ui.vertical.menu.sidebar-menu {
-    margin-top: 60px !important;
+    margin-top: 70px !important;
     margin-left: 5px !important ;
     max-height: calc(95% - 40px) !important;
     height: calc(95% - 40px) !important;
-    border-radius: 10px !important ;
+    border-radius: 10px !important;
+    box-shadow: none !important;
   }
-  canvas{
-    background-color: #fff;
-    box-shadow: 1px 0px 5px 0px rgba(76, 75, 75, 0.32);
-    border: 1px solid #c1b3d3a2;
-    border-radius: 10px;
+  .ui.sidebar.vertical.menu.sidebar-menu {
+    width: 230px !important;
   }
 
- .chart-container{
-   display: flex;
-   background-color: rgba(252, 252, 252, 0.802);
-   height: fit-content;
-   width: fit-content;
-   border: rgb(255, 255, 255);
-   box-shadow: 2px 0px 5px 0px rgba(76, 75, 75, 0.32);
-   border-radius: 10px;
-   margin-right: 40px;
-   
- }
+
+ 
 .hoverable:hover{
-  background-color: rgb(144, 108, 212) !important;
+  background: var(--blue) !important;
   cursor: pointer;
 }
 .ui.toggle.checkbox>label::before{
-  background-color: rgba(182, 96, 231, 0.507) !important;
+  background: var(--secondaryColor) !important;
 
 }
  .bar-chart>*{
@@ -49,79 +38,27 @@ nav{
   justify-content: space-between;
   height: 50%;
 }
-.charts-wrapper{
-  padding: 50px 0 !important;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.stat-chart-wrapper{
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-
-}
-.list-container{
-  padding: 10px 20px;
-  width: 100%;
-  height: 100%;
-  
-}
-.ui.celled.table{
-     box-shadow: 0px 0px 8px 0px rgba(63, 63, 63, 0.423) ;
-}
-
-
-
-textarea {
-  margin: 10px;
-  width: 100%;
-  height: 300px;
-  max-height:400px ;
-  transform: translateY(-12px);
-  max-height: 600;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  background-color: #f6f1525a;
-  font-size: 16px;
-  resize:vertical;
-  box-shadow: 1px 0px 5px 0px rgba(76, 75, 75, 0.32);
-}
-
-.note-pad{
-  margin-right: 50px;
-  max-height: 300px;
-
-}
 
 
   .ui.vertical.menu.sidebar-menu .item i.icon {
     float: right;
     margin: 0em 0.5em 0em 0em;
+
   }
   
 
-.performance-card{
-  height: 200px;
-  width: 200px;
-  border: 1px solid black;
-
+.main-content {
+  height: 100%;
+  padding-top: 50px;
 }
 
   @media (min-width: 768px) {
     .ui.vertical.menu.sidebar-menu {
       visibility: visible;
-      transform: translate3d(0, 0, 0);
-      width: 15rem !important;
-      box-shadow: 0px 0px 8px 0px rgba(108, 107, 107, 0.693) ;
     }
     .main-content {
+      height: 100%;
       margin-left: 16rem;
-      margin-top: 4rem
     }
     .sidebar-menu-toggler {
       display: none !important;
@@ -130,10 +67,7 @@ textarea {
   
   
   @media (max-width: 800px) {
-    .charts-wrapper{
-      flex-direction: column;
-      margin: 10px 0;
-    }
+    
     .stats-container{
       display: flex;
       flex-direction: column;
@@ -153,15 +87,7 @@ textarea {
   flex-direction:column-reverse;
 }
 
-    .note-pad{
-  display: none;
-      width: 90%;
-      padding-left: 20px;
-      margin-left: 20px;
-    }
-    .charts-wrapper{
-      display: none;
-    }
+   
   
   }
   
