@@ -58,13 +58,10 @@ font-size: 1.1rem;
 
 }
 .view-project{
-    /* border: 2px solid rgba(228, 126, 75, 0.409); */
-
     background: var(--secondaryColor);
     opacity: 70%;
     height: 20px;
-    margin-top: 13px;
-    margin-right: 13px;
+    margin: auto 0;
     width: 60px;
     height: 20px;
     color: #fff;
@@ -72,13 +69,31 @@ font-size: 1.1rem;
     text-align: center;
 }
 .view-all{
-    height: 5%;
+    cursor: pointer;
+    color: rgb(222, 132, 83);
+    margin-left: 65px;
+    height: 7%;
+    width: 70%;
+    border: 0.08rem solid rgba(240, 121, 74, 0.518);
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.view-all:hover{
+    opacity: 70%;
+background: var(--secondaryColor) ;
+border: none;
+color: white;
+}
 
 .view-project:hover{
-    background: #fff;
+    background: white;
     color: orangered;
+}
+
+@media(max-width: 900px){
+    .view-all{
+        display: none;
+    }
 }

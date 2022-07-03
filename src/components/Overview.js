@@ -12,6 +12,7 @@ export default function Overview() {
   const [totalProjects, setTotalProjects] = useState(0);
   const [totalTasks, setTotalTasks] = useState(0);
   const [tasksCompleted, setTasksCompleted] = useState(0);
+  const [ownedProjects, setOwnedProjects] = useState(0);
   const { currentUser } = useAuth();
 
   useEffect(() => {
@@ -21,6 +22,8 @@ export default function Overview() {
     const q = query(projectsRef, where("owner", '==', currentUser.email))
     getDocs(q)
       .then((snapshot) => {
+        
+        setOwnedProjects(snapshot.docs.length)
         let tasksNum = 0;
         let tasksCompleted = 0;
 
@@ -45,15 +48,14 @@ export default function Overview() {
       <div className="overview-left">
         <div className="left-overview-top">
             <DashCard title={'Projects'} stat={totalProjects} />
-            <DashCard title={'Owned Projects'} stat={'owned projects here'}/>
-            <DashCard title={'Owned Projects'} stat={'owned projects'}/>
+            <DashCard title={'Owned Projects'} stat={ownedProjects}/>
+            <DashCard title={'Team'} stat={'0'}/>
         </div>
         <div className="left-overview-bottom">
           <div className="left-overview-bottom-left">
             <List />
           </div>
           <div className="left-overview-bottom-right">
-            abcd          
           </div>
         </div>
       </div>
@@ -66,6 +68,7 @@ export default function Overview() {
             />
           </div>
           <div className="right-overview-bottom">
+            <div className="coming-soon">Coming Soon...</div>
           </div>
       </div>
 

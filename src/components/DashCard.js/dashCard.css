@@ -92,4 +92,13 @@
 
 
   }
+  .wrap{
+    display: flex;
+    text-align: none;
+    justify-content: space-between;
+    align-items: center;
+
+    
+  }
+ 
 }

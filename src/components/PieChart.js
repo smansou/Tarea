@@ -35,11 +35,11 @@ export default function PieChart(props) {
           label: [...props.dataNamesArray],
           backgroundColor: [
             '#ff997b',
-            'rgba(54, 162, 235, 0.4)',
+            '#193999',
           ],
           height: '500px',
           width: '500px',
-          borderColor: 'rgba(54, 162, 235, 1)',
+          borderColor:'#193999',
           borderWidth: 3,
           tension: 0,
           fill: true,

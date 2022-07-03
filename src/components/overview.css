@@ -18,14 +18,7 @@
     flex-direction: column;
     justify-content: space-between;
 }
-.chart-wrapper{
-    max-height: 280px;
-    max-width: 270px;
-        
-}
-.barChart{
-    height: 80px;
-}
+
 
 .left-overview-top {
     background-color: #fff;
@@ -47,7 +40,14 @@
 }
 
 .left-overview-bottom-right {
+    height: 100%;
     width: 30%;
+}
+
+.barChart{
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
 }
 
 .left-overview-bottom-left {
@@ -67,7 +67,15 @@
 }
 
 .right-overview-bottom {
-    background-color: #fff;
+    color: white;
+    font-size: 1.9rem;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 90%;
+    background-color: #ee8c68;
+    background-image: linear-gradient(315deg, #ee8c68 0%, #ea7259 74%);
     border-radius: 10px;
     margin: 0 15px;
     height: 60%;
@@ -79,6 +87,7 @@
         flex-direction: column;
         padding: 0 0px;
         align-items:center;
+        height: 50%
     }
     .left-overview-bottom-right {
         display: none;
